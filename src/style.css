@@ -52,25 +52,8 @@ i {
 }
 #login {
   grid-column: 8/9;
-  grid-row: 1/3;
-  color: rgba(230, 175, 46, 0.8);
-  height: 45.607975006103516px;
-  width: 155px;
-  border-radius: 5px;
-  text-shadow: 0px 4px 4px rgba(255, 255, 255, 0.25);
-  text-align: center;
-  margin-right: 3px;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 900;
-  line-height: 48px;
-  border-style: solid;
-  border-color: rgba(230, 175, 46, 0.6);
-}
-#login:hover {
-  cursor: pointer;
-  background-color: rgba(57, 67, 183, 1);
-  text-shadow: 0px 4px 4px rgba(230, 175, 46, 1);
+  grid-row: 1/2;
+  visibility: hidden;
 }
 nav > div > i {
   font-size: 18px;
@@ -177,6 +160,16 @@ footer > div > i:hover {
   margin: 20px 30px;
   padding: 10px;
   min-height: 600px;
+  display: grid;
+  grid-template-rows: 50px, 100%;
+}
+#containerSort {
+  grid-row: 1/2;
+  align-self: center;
+  justify-self: center;
+  margin-bottom: 15px;
+}
+#containerCards {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
@@ -187,28 +180,31 @@ footer > div > i:hover {
   width: 220px;
   height: 290px;
   display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: 83% 18%;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 60% 20% 10% 10%;
 }
-  .image-card {
-    background-color: crimson; /*visual solo para pruebas*/
-  }
-  .card:hover {
+    .card:hover {
     cursor: pointer;
     transform: scale(1.1);
   } 
-  .card:hover > .name-card {
+  .card:hover > .data-card {
     background-color:rgb(20, 90, 131);
-    padding-left: 30px;
+    padding-left: 1px;
   }
-  .name-card {
+  #image-card {
+    grid-column: 1/3;
+  }
+  .data-card{
     background-color: rgb(18, 22, 36);
     color: rgba(224, 226, 219, 1);
+    text-align: center;
+  }
+  #name-card {
+    grid-column: 1/3;
     line-height: 45px;
     font-size: 30px;
     font-weight: 900;
     font-style: oblique;
-    padding-left: 20px;
   }
 
   /*estilos pagina informacion*/
@@ -315,7 +311,7 @@ transform: skewX(-50deg);
     }
     #login {
       grid-column: 7/8;
-      grid-row: 1/3;
+      grid-row: 1/2;
     }
     #search {
       grid-column: 1/7;
@@ -360,17 +356,16 @@ transform: skewX(-50deg);
     }
     .nav {margin-top: 0px;}
     #LOLimg {
-      display: block;
+      display: none;
       grid-column: 1/2;
       grid-row: 1/2;
     }
     #login {
-      grid-column: 2/3;
-      grid-row: 1/2;
+      display: none;
     }
     #search {
       grid-column: 1/3;
-      grid-row: 2/3;
+      grid-row: 1/2;
       margin-top: 0px;
     }
     /*para la pagina index*/

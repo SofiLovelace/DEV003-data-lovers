@@ -1,21 +1,123 @@
 import dataManagement from './data.js';
 import data from './data/lol/lol.js';
 const firstDataSet = JSON.parse(JSON.stringify(data.data));  /// creamos una primer copia profunda con un metodo de serialización, convertimos a array convertimos a objeto de vuelta pra romper la referencia
-//const inputUser = prompt("Ingresa el nombre del campeon").toUpperCase(); //convertimos a mayusculas para no tener problemas
+//Almaceno en constante el main//contenedor principal
+//const containerMainCards = document.querySelector("#champions-list1");
+const containerMainGlobal = document.querySelector("main");
 
-////////////////////////////////////////
-/**********ESTUDIANDO OBJETOS*********/
-////////////////////////////////////////
-// /*****Object.keys******/
-// console.log(Object.keys(data.data)); // Obtenemos en un array todos las propiedades que contiene el objeto (si  alguna de las propiedades es un valor distinto a string tener cuidado ya que el array se desordena)
-// console.log(Object.keys(data.data).length); // Al array obtenido le podemos aplicar el metodo .length y asi podemos saber cuantas propiedades tiene el objeto, incluso podemos iterar con for o mas metodos para arrays
-// /*****Object.keys******/
-// console.log(Object.values(data.data)); // Devuelve un array con los valores de cada propiedad del objeto, no devuelve los nombres de las propiedades. Una ventaja es que no hay parseo de datos a string, concatena en el array sin modificar el valor de cada elemento
+/********************* *****************/
+/*****Volver a la pagina principal******/
+function createIndex() { //creamos la funcion para volver a la pagina principal
+  containerMainGlobal.innerHTML = "" //para que cada que la llamemos el contenedor este vacio
+  containerMainGlobal.setAttribute("id", "champions-list");
+
+  const divVideo1 = document.createElement("div");
+  divVideo1.setAttribute("id", "video-1");
+  divVideo1.innerHTML = `
+  <video width="100%" height="100%" loop="true" muted autoplay> 
+      <source src="./videos/Fondo-lol.webm" type="video/webm">
+  </video>
+  `
+
+  const divVideo2 = document.createElement("div");
+  divVideo2.setAttribute("id", "video-2")
+  divVideo2.innerHTML =`
+  <video width="100%" height="100%" loop="true" muted autoplay> 
+      <source src="./videos/frontal-lol.webm" type="video/webm">
+      </video>
+  `
+
+  containerMainGlobal.appendChild(divVideo1); // agregamos los elementos al main
+  containerMainGlobal.appendChild(divVideo2); // agregamos los elementos al main
+}
+
+const lolImg = document.querySelector("#LOLimg");
+lolImg.addEventListener("click", function(){
+  createIndex()
+})
 
 
-/*Pasamos parametro para search data y almacenamos los valores encontrado en una constante */
-const  searchedName = dataManagement.searchData(firstDataSet, "");
+/******funcion para crear tarjetas******/
+function createCards (){
+  containerMainGlobal.innerHTML = "" //para que cada que la llamemos el contenedor este vacio
+  containerMainGlobal.setAttribute("id", "champions-list1")
+  containerMainGlobal.innerHTML = `
+  <div id="containerSort">
+    <fieldset>
+    <legend>Ordenar por ataque</legend>
+    <div>
+      <label for="atack">Mas ataque</label>
+      <input type="radio" id="more-atack" name="atack">
+    </div>
+    <div>
+      <label for="atack">Menos ataque</label>
+      <input type="radio" id="less-atack" name="atack">
+    </div>
+  </div>
+  <div id="containerCards">
+  
+  </div>
+  `
+  const containerCards = document.querySelector("#containerCards");
+  filteredOut.forEach(function(eachObject){
+    const card = document.createElement("div"); //creamos un div por cada objeto
+    card.className = "card"; //asignamos clase a cada div que creemos
+    card.setAttribute("id", eachObject.name);
+    /*introducimos la data y elementos que tendra cada div*/
+    card.innerHTML = `
+    <div id="image-card">
+        <img src="${eachObject.splash}" alt="Imagen ${eachObject.id}" width="100%" height="100%">
+    </div>
+    <div id="name-card" class="data-card">
+        ${eachObject.name}
+    </div>
+    <div id="attack-card"  class="data-card">
+        Ataque:   ${eachObject.info.attack}
+    </div>
+    <div id="defense-card"  class="data-card">
+        Defensa:   ${eachObject.info.defense}
+    </div>
+    <div id="magic-card" class="data-card">
+        Magia:   ${eachObject.info.magic}
+    </div>
+    <div id="difficulty-card" class="data-card">
+        Difficultad:   ${eachObject.info.difficulty}
+    </div>
+  `
+    containerCards.appendChild(card); // agregamos cada elemento creado al contenedor de las tarjetas
+  })
+}
+
+//Llamo a searchData y la almaceno en constante
+let filteredOut
+function searchSelected(inputName, inputType){
+  const  searchedName = dataManagement.searchData(firstDataSet, inputName);
+  //Llamo a filterData y la almaceno en constante
+  filteredOut = dataManagement.filterData(searchedName, inputType);
+  createCards();
+}
+
+//Agrego un addEventListener a botonoes de filtrado
+const buttonsNav = document.querySelectorAll(".nav");
+buttonsNav.forEach(function(element){
+  element.addEventListener("click", function(){
+    const inputValue = document.querySelector("#input").value; //Almaceno en constante el valor de input
+    searchSelected(inputValue, element.getAttribute("id"))
+
+  } )
+})
+
+
+/*const  searchedName = dataManagement.searchData(firstDataSet, "");
 console.log(searchedName);
-//pasamos parametros para filterData y almacenamos en variable
-const filteredOut = dataManagement.filterData(searchedName, "Fighter");
-console.log(filteredOut);
+//Llamo a filterData y la almaceno en constante
+const filteredOut = dataManagement.filterData(searchedName, "");
+console.log(filteredOut);*/
+
+
+
+
+/*Mostramos la informacion de cada tarjeta seleccionada en informacion*/
+//const selectedChampion = dataManagement.searchData(firstDataSet, /*nameChamSelected*/"AATROX"); //buscamos la data de la selección
+//console.log (selectedChampion);
+
