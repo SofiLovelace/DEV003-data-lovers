@@ -1,6 +1,6 @@
 const dataManagement = {
   
-  /************ Comenzamos con una funcion de busqueda por nombre, si el usuario no ha ingresado nombre se muestran todos */
+  /************ Función de busqueda ******/
   searchData:function(data, searchedName){
     const dataSought = [];
     //let dataImgUrl
@@ -14,6 +14,7 @@ const dataManagement = {
     } ) 
     return dataSought ; //devolvemos la data con los nombres encontrados
   },
+
   /***********funcion de filtrado******/
   filterData:function(data, type) {
     if (type === ""){
@@ -25,10 +26,50 @@ const dataManagement = {
         })
         return element.tags[0] === type.toUpperCase() || element.tags[1] === type.toUpperCase() || element.tags[2] === type.toUpperCase();
       })
+      console.log(arrayFiltredOut)
       return arrayFiltredOut;
     }
-    
+  },
+
+  /***********funcion de ordenar*********/
+  sortData:function(data, order, orderBy) {
+    switch (order) {
+    case "more":
+      data.sort(function(a, b){
+        if (a.info[orderBy] > b.info[orderBy]) {
+          return -1;
+        } 
+        if (a.info[orderBy] < b.info[orderBy]){
+          return 1;
+        }
+        return 0;
+      })
+      break;
+    case "less":
+      data.sort(function(a, b){
+        if (a.info[orderBy] > b.info[orderBy]) {
+          return 1;
+        } 
+        if (a.info[orderBy] < b.info[orderBy]){
+          return -1;
+        }
+        return 0;
+      })
+      break;
+    case "name":
+      data.sort(function(a, b){
+        if (a.id > b.id) {
+          return 1;
+        } 
+        if (a.id < b.id) {
+          return -1;
+        }
+        return 0;
+      })
+    }
   }
+  /***********funcion de calcular*********/
+  
 }
 export default dataManagement;
 

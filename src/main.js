@@ -38,20 +38,28 @@ lolImg.addEventListener("click", function(){
 
 
 /******funcion para crear tarjetas******/
-function createCards (){
+function createCards (data){
   containerMainGlobal.innerHTML = "" //para que cada que la llamemos el contenedor este vacio
   containerMainGlobal.setAttribute("id", "champions-list1")
   containerMainGlobal.innerHTML = `
-  <div id="containerSort">
-    <fieldset>
-    <legend>Ordenar por ataque</legend>
-    <div>
-      <label for="atack">Mas ataque</label>
-      <input type="radio" id="more-atack" name="atack">
-    </div>
-    <div>
-      <label for="atack">Menos ataque</label>
-      <input type="radio" id="less-atack" name="atack">
+  <div id="sort-calcule">
+    <div id="containerSort"">
+      <div id="attack">
+        <select name="orderBy" id="orderBy">
+          <option value ="attack" id="attack" selected>Ataque</option>
+          <option value ="defense" id="defense">Defensa</option>
+          <option value ="difficulty" id="difficulty">Dificultad</option>
+          <option value ="magic" id="magic">Magia</option>
+        </select>
+        <div id="more-less">
+          <div id="more" class="orderAsDs">
+            Mayor
+          </div>
+          <div id="less" class="orderAsDs">
+            Menor
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div id="containerCards">
@@ -59,7 +67,7 @@ function createCards (){
   </div>
   `
   const containerCards = document.querySelector("#containerCards");
-  filteredOut.forEach(function(eachObject){
+  data.forEach(function(eachObject){
     const card = document.createElement("div"); //creamos un div por cada objeto
     card.className = "card"; //asignamos clase a cada div que creemos
     card.setAttribute("id", eachObject.name);
@@ -86,38 +94,36 @@ function createCards (){
   `
     containerCards.appendChild(card); // agregamos cada elemento creado al contenedor de las tarjetas
   })
+  activeSort(data);
 }
 
-//Llamo a searchData y la almaceno en constante
-let filteredOut
+/*creamos la funcion que paso los parametro para sort*/
+function activeSort(data){
+  const inputSort = document.querySelectorAll(".orderAsDs");
+  inputSort.forEach(function(element){
+    element.addEventListener("click", function(){      //dataManagement.sortData(data, element.getAttribute("ïd"));
+      const valueSelect = document.querySelector("#orderBy")
+      dataManagement.sortData(data, element.getAttribute("id"), valueSelect.value);
+      createCards(data);
+    })
+  })
+}
+
+//Llamo a searchData y la almaceno en constante dentro de función
 function searchSelected(inputName, inputType){
   const  searchedName = dataManagement.searchData(firstDataSet, inputName);
   //Llamo a filterData y la almaceno en constante
-  filteredOut = dataManagement.filterData(searchedName, inputType);
-  createCards();
+  const filteredOut = dataManagement.filterData(searchedName, inputType);  //dataManagement.sortData(filteredOut, "name");
+  createCards(filteredOut);
 }
 
 //Agrego un addEventListener a botonoes de filtrado
 const buttonsNav = document.querySelectorAll(".nav");
+console.log(buttonsNav);
 buttonsNav.forEach(function(element){
   element.addEventListener("click", function(){
     const inputValue = document.querySelector("#input").value; //Almaceno en constante el valor de input
-    searchSelected(inputValue, element.getAttribute("id"))
-
-  } )
+    searchSelected(inputValue, element.getAttribute("id"));
+  })
 })
-
-
-/*const  searchedName = dataManagement.searchData(firstDataSet, "");
-console.log(searchedName);
-//Llamo a filterData y la almaceno en constante
-const filteredOut = dataManagement.filterData(searchedName, "");
-console.log(filteredOut);*/
-
-
-
-
-/*Mostramos la informacion de cada tarjeta seleccionada en informacion*/
-//const selectedChampion = dataManagement.searchData(firstDataSet, /*nameChamSelected*/"AATROX"); //buscamos la data de la selección
-//console.log (selectedChampion);
 

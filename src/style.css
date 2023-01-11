@@ -21,6 +21,7 @@ i {
   color: rgba(224, 226, 219, 1);
   font-size: 14px;
   font-weight: 700;
+  margin-top: 5px;
 }
 .nav:hover {
   background-color: rgb(73, 73, 73);
@@ -49,6 +50,9 @@ i {
 #LOLimg {
   grid-column: 1/2;
   grid-row: 1/3;
+}
+#LOLimg:hover {
+  cursor: pointer;
 }
 #login {
   grid-column: 8/9;
@@ -157,17 +161,50 @@ footer > div > i:hover {
 #champions-list1 {
   position: relative;
   grid-row: 2/3;
-  margin: 20px 30px;
+  margin: 5px 30px;
   padding: 10px;
   min-height: 600px;
   display: grid;
   grid-template-rows: 50px, 100%;
 }
-#containerSort {
+#sort-calcule {
   grid-row: 1/2;
   align-self: center;
   justify-self: center;
   margin-bottom: 15px;
+  display: flex;
+  flex-flow: row space-betwen;
+}
+#containerSort {
+  display: flex;
+  flex-flow: column wrap;
+}
+#more-less {
+  display: flex;
+  flex-flow: row wrap;
+}
+#orderBy {
+  width: 165px;
+}
+.orderAsDs{
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  width: 70px;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 15px;
+  border-style: outset;
+  background-color:#b3b0b0;
+}
+
+.orderAsDs:hover{
+  cursor: pointer;
+}
+
+
+#containerCalc {
+  padding-left: 30px;
 }
 #containerCards {
   display: flex;
