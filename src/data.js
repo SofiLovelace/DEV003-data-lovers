@@ -7,7 +7,7 @@ const dataManagement = {
     Object.entries(data).forEach (function (cadaArray) {  //usamos forEach para iterar cada arreglo, buscamos en cada arreglo los datos que coincidan con la busqueda
       const clave = cadaArray[0].toUpperCase(); //convertimos a mayusculas para no tener problema
       const valor = cadaArray[1];
-      if (clave.indexOf(searchedName.toUpperCase(), 0) === 0){ // si el indece es diferente a -1, ese es nuestra data buscada
+      if (clave.indexOf(searchedName.toUpperCase(), 0) === 0){
       //if (clave.includes(inputUser, )) {  // si dentro del string esta lo buscado devuelve true
         dataSought.push(valor);  // concatenamos dentro del array todos los valores que puedan coincidir 
       }

@@ -47,7 +47,8 @@ function createCards (data, percentaje){
     <div><p>El ${percentaje}% de los campeones son del tipo seleccionado</p> </div>
       <div id="attack">
         <select name="orderBy" id="orderBy">
-          <option value ="attack" id="attack" selected>Ataque</option>
+        <option value ="select" id="select" selected>Ordenar por</option>
+          <option value ="attack" id="attack">Ataque</option>
           <option value ="defense" id="defense">Defensa</option>
           <option value ="difficulty" id="difficulty">Dificultad</option>
           <option value ="magic" id="magic">Magia</option>
