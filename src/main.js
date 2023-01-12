@@ -44,20 +44,20 @@ function createCards (data, percentaje){
   containerMainGlobal.innerHTML = `
   <div id="sort-calcule">
     <div id="containerSort"">
-    <div><p>El ${percentaje}% de los campeones son del tipo seleccionado</p> </div>
-      <div id="attack">
+    <div><p>Estas viendo un ${percentaje}% del total de campeones</p> </div>
+      <div id="interfaceToOrder">
         <select name="orderBy" id="orderBy">
-        <option value ="select" id="select" selected>Ordenar por</option>
+          <option value ="select" id="select" selected>Ordenar por</option>
           <option value ="attack" id="attack">Ataque</option>
           <option value ="defense" id="defense">Defensa</option>
           <option value ="difficulty" id="difficulty">Dificultad</option>
           <option value ="magic" id="magic">Magia</option>
         </select>
         <div id="more-less">
-          <div id="more" class="orderAsDs">
+          <div id="more" class="orderMoreAndLes">
             Mayor
           </div>
-          <div id="less" class="orderAsDs">
+          <div id="less" class="orderMoreAndLes">
             Menor
           </div>
         </div>
@@ -101,7 +101,7 @@ function createCards (data, percentaje){
 
 /*creamos la funcion que paso los parametro para sort*/
 function activeSort(data){
-  const inputSort = document.querySelectorAll(".orderAsDs");
+  const inputSort = document.querySelectorAll(".orderMoreAndLes");
   inputSort.forEach(function(element){
     element.addEventListener("click", function(){      //dataManagement.sortData(data, element.getAttribute("ïd"));
       const valueSelect = document.querySelector("#orderBy")

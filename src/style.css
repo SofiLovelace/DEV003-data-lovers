@@ -179,14 +179,20 @@ footer > div > i:hover {
   display: flex;
   flex-flow: column wrap;
 }
+#interfaceToOrder {
+  text-align: center;
+}
 #more-less {
   display: flex;
   flex-flow: row wrap;
+  align-self: center;
+  justify-self: center;
+  padding-left: 73px;
 }
 #orderBy {
   width: 165px;
 }
-.orderAsDs{
+.orderMoreAndLes{
   font-size: 13px;
   font-weight: 700;
   text-align: center;
@@ -198,7 +204,7 @@ footer > div > i:hover {
   background-color:#b3b0b0;
 }
 
-.orderAsDs:hover{
+#more-less:hover{
   cursor: pointer;
 }
 
