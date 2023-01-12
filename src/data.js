@@ -20,14 +20,13 @@ const dataManagement = {
     if (type === ""){
       return data
     } else {
-      const arrayFiltredOut = data.filter(function(element){
+      const arrayFilteredOut = data.filter(function(element){
         element.tags.forEach(function(elementTags, index){//iteramos en cada elemento de tags para convertirlo a mayusculas
           element.tags.splice(index, 1, elementTags.toUpperCase());
         })
         return element.tags[0] === type.toUpperCase() || element.tags[1] === type.toUpperCase() || element.tags[2] === type.toUpperCase();
       })
-      console.log(arrayFiltredOut)
-      return arrayFiltredOut;
+      return arrayFilteredOut;
     }
   },
 
@@ -67,11 +66,13 @@ const dataManagement = {
         return 0;
       })
     }
+  },
+
+  /***********funcion para realizar calculos*********/
+  calculate:function(originalData, filteredData) {
+    const total = originalData.length
+    const part = filteredData.length
+    return part / 100 * total
   }
-  /***********funcion de calcular*********/
-  
 }
 export default dataManagement;
-
-/*****Object.entries*****//****con forEach****/
-//console.log(Object.entries(data.data)); // Devuelve un array de arrays, con propiedad y valor en cada array

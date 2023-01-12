@@ -4,7 +4,7 @@ const firstDataSet = JSON.parse(JSON.stringify(data.data));  /// creamos una pri
 //Almaceno en constante el main//contenedor principal
 //const containerMainCards = document.querySelector("#champions-list1");
 const containerMainGlobal = document.querySelector("main");
-
+let percentajeGlobal = 0
 /********************* *****************/
 /*****Volver a la pagina principal******/
 function createIndex() { //creamos la funcion para volver a la pagina principal
@@ -38,12 +38,13 @@ lolImg.addEventListener("click", function(){
 
 
 /******funcion para crear tarjetas******/
-function createCards (data){
+function createCards (data, percentaje){
   containerMainGlobal.innerHTML = "" //para que cada que la llamemos el contenedor este vacio
   containerMainGlobal.setAttribute("id", "champions-list1")
   containerMainGlobal.innerHTML = `
   <div id="sort-calcule">
     <div id="containerSort"">
+    <div><p>El ${percentaje}% de los campeones son del tipo seleccionado</p> </div>
       <div id="attack">
         <select name="orderBy" id="orderBy">
           <option value ="attack" id="attack" selected>Ataque</option>
@@ -104,7 +105,8 @@ function activeSort(data){
     element.addEventListener("click", function(){      //dataManagement.sortData(data, element.getAttribute("ïd"));
       const valueSelect = document.querySelector("#orderBy")
       dataManagement.sortData(data, element.getAttribute("id"), valueSelect.value);
-      createCards(data);
+      createCards(data, percentajeGlobal);
+      
     })
   })
 }
@@ -113,13 +115,21 @@ function activeSort(data){
 function searchSelected(inputName, inputType){
   const  searchedName = dataManagement.searchData(firstDataSet, inputName);
   //Llamo a filterData y la almaceno en constante
-  const filteredOut = dataManagement.filterData(searchedName, inputType);  //dataManagement.sortData(filteredOut, "name");
-  createCards(filteredOut);
+  const filteredOut = dataManagement.filterData(searchedName, inputType);
+  function percentaje () {
+    percentajeGlobal = dataManagement.calculate(searchedName, filteredOut);
+    return percentajeGlobal
+  }
+  if (inputType === "") {
+    createCards(filteredOut, 100);
+  } else {
+    createCards(filteredOut, percentaje());
+  }
+  
 }
 
 //Agrego un addEventListener a botonoes de filtrado
 const buttonsNav = document.querySelectorAll(".nav");
-console.log(buttonsNav);
 buttonsNav.forEach(function(element){
   element.addEventListener("click", function(){
     const inputValue = document.querySelector("#input").value; //Almaceno en constante el valor de input
