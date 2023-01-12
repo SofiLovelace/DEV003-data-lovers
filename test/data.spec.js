@@ -138,7 +138,37 @@ describe('dataManagement', () => {
       expect(dataManagement.filterData(dummyData, 'Fighter').length).toBe(7);
     });
   });
+
+  describe('dataManagement.sortData', () => {
+    it('debería ser una función', () => {
+      expect(typeof dataManagement.sortData).toBe('function');
+    });
+
+    it('debería retornar 10 para "dummyData", "more" y "magic" ', () => {
+      dataManagement.sortData(dummyData, 'more', 'magic');
+      expect(dummyData[0].info.magic).toBe(10);
+    });
+
+    it('debería retornar 1 para "dummyData", "less" y "attack" ', () => {
+      dataManagement.sortData(dummyData, 'less', 'attack');
+      expect(dummyData[0].info.attack).toBe(1);
+    });
+  });
+
+  describe('dataManagement.calculate', () => {
+    it('debería ser una función', () => {
+      expect(typeof dataManagement.calculate).toBe('function');
+    });
+
+    it('debería retornar 0.77 para "dummyData" y "filtered" ', () => {
+      const filtered = dataManagement.filterData(dummyData, 'Fighter')
+      expect(dataManagement.calculate(dummyData, filtered)).toBe(0.77);
+    });
+  });
+
 })
+
+
 
 /*
 describe('example', () => {
