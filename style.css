@@ -1,0 +1,505 @@
+/*estilos y grillas generales*/
+
+body {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-auto-rows: auto;
+  }
+html {
+    box-sizing: border-box;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+}
+i {
+  padding: 10px 10px;
+}
+.nav {
+  color: rgba(224, 226, 219, 1);
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 5px;
+}
+.nav:hover {
+  background-color: rgb(73, 73, 73);
+  cursor: pointer;
+  width:100%;
+  height: 35px;
+  border-radius: 15px;
+  line-height: 33px;
+  text-align: center;
+  font-weight: 900;
+  text-shadow: 0px 0px 4px rgba(230, 175, 46, 1);
+  ;
+}
+#nav-Bar {
+  grid-row: 1/2;
+  background-color: rgba(15, 14, 14, 1);
+  position: relative;
+  width: 100%;
+  height: 85px;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: 35px 50px;
+  align-items: center;
+  justify-items: center;
+}
+#LOLimg {
+  grid-column: 1/2;
+  grid-row: 1/3;
+}
+#LOLimg:hover {
+  cursor: pointer;
+}
+#login {
+  grid-column: 8/9;
+  grid-row: 1/2;
+  visibility: hidden;
+}
+nav > div > i {
+  font-size: 18px;
+  color:rgba(230, 175, 46, 0.9);
+  padding: 4px 10px 0px 10px;
+}
+#search {
+  grid-column: 2/8;
+  grid-row: 1/2;
+  width: 500px;
+  height: 30px;
+  display: flex;
+  margin-top: 20px;
+  position: relative;
+  background-color: rgba(15, 14, 14, 1);
+  border-style: solid;
+  border-color: rgba(224, 226, 219, 0.3);
+  border-radius: 15px;
+}
+#input {
+  width: 400px;
+  height: 20px;
+  border-style: none;
+  background-color:  rgba(15, 14, 14, 1);
+  color: rgba(224, 226, 219, 1);
+  border-radius: 15px;
+  padding-top: 3px;
+}
+#input:focus {
+  outline: none;
+}
+#social-media {
+  grid-row: 3/4;
+  align-self: center;
+  justify-self: center;
+  background: rgba(15, 14, 14, 1);
+  color: rgba(224, 226, 219, 1);
+  height: 64px;
+  width: 100%;
+  font-weight: 700;
+  display: grid;
+  grid-template-columns: 45% 10% 45%;
+}
+.text-social {
+  font-size: 18px;
+  text-align: end;
+  line-height: 65px;
+}
+.icons {
+text-align: start;
+font-size: 43px;
+padding-top: 3px;
+
+}
+.separator-3 {
+  font-weight: 30;
+  font-size: 60px;
+  color: rgba(224, 226, 219, 0.5);
+  line-height: 53px;
+  text-align: center;
+}
+
+footer > div > i {
+  padding-right: 30px;
+}
+
+footer > div > i:hover {
+  cursor: pointer;
+  text-shadow: 0px 4px 4px rgba(230, 175, 46, 1);
+}
+
+
+
+/*estilos pagina principal*/
+  /*videos*/
+body{
+  background-color: rgba(15, 14, 14, 1);
+}
+#champions-list{
+  position: relative;
+  grid-row: 2/3;
+  min-height: 600px;
+  background-color: rgba(15, 14, 14, 1);
+  display: grid;
+  grid-template-columns: repeat(20 5%);
+  grid-template-rows: repeat(20 5%);
+}
+#video-1 {
+  position: relative;
+  grid-column: 1/21;
+  grid-row: 1/21;
+}
+
+#video-2 {
+  align-self: center;
+  justify-self: center;
+  position: absolute;
+  grid-column: 2/20;
+  grid-row: 2/20;
+}
+
+
+/*estilos pagina campeones*/
+#champions-list1 {
+  position: relative;
+  grid-row: 2/3;
+  margin: 5px 30px;
+  padding: 10px;
+  min-height: 600px;
+  display: grid;
+  grid-template-rows: 50px, 100%;
+}
+#sort-calcule {
+  grid-row: 1/2;
+  align-self: center;
+  justify-self: center;
+  margin-bottom: 15px;
+  display: flex;
+  flex-flow: row space-betwen;
+}
+#containerSort {
+  display: flex;
+  flex-flow: column wrap;
+}
+div > p {
+  color: rgba(224, 226, 219, 1);
+}
+#interfaceToOrder {
+  text-align: center;
+}
+#more-less {
+  display: flex;
+  flex-flow: row wrap;
+  align-self: center;
+  justify-self: center;
+  padding-left: 73px;
+}
+#orderBy {
+  width: 165px;
+}
+.orderMoreAndLes{
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  width: 70px;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 15px;
+  border-style: outset;
+  background-color:#b3b0b0;
+}
+
+#more-less:hover{
+  cursor: pointer;
+}
+
+
+#containerCalc {
+  padding-left: 30px;
+}
+#containerCards {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+  /*tarjetas*/
+.card {
+  margin: 12.5px;
+  width: 220px;
+  height: 290px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 60% 20% 10% 10%;
+}
+    .card:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+  } 
+  .card:hover > .data-card {
+    background-color:rgb(20, 90, 131);
+    padding-left: 1px;
+  }
+  #image-card {
+    grid-column: 1/3;
+  }
+  .data-card{
+    background-color: rgb(18, 22, 36);
+    color: rgba(224, 226, 219, 1);
+    text-align: center;
+  }
+  #name-card {
+    grid-column: 1/3;
+    line-height: 45px;
+    font-size: 30px;
+    font-weight: 900;
+    font-style: oblique;
+  }
+
+  /*estilos pagina informacion*/
+#body-information {
+  background-color: rgba(6, 6, 6, 1);
+}
+#champion-information {
+  min-height: 1200px;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 50% 50%;
+  justify-items: center;
+  margin: 0px 160px;
+}
+#information-card{
+color: rgba(255, 255, 255, 0.9);
+font-weight: 600;
+display: grid;
+grid-template-columns: 100%;
+grid-template-rows: 25% 75%;
+}
+#title {
+  display: grid;
+  justify-items: center;
+}
+#title-name {
+  font-size: 100px;
+  font-style: normal;
+  font-family: 'Playfair Display SC', serif;
+}
+#title-title {
+  font-family: 'Playfair Display SC', serif;
+  font-size: 25px;
+  font-weight: 200;
+
+}
+
+#resume {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 100%;
+  align-items: center;
+}
+#statistics {
+  font-size: 18px;
+  border-right-style: solid;
+  border-color: rgba(255, 255, 255, 0.6);
+}
+.container1{
+display: inline-block;
+height: 20.99px;
+width: 26px;
+background: #3943B7;
+border: 1px solid #000000;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+transform: skewX(-50deg);
+}
+#description {
+  font-size: 21px;
+  font-family: 'Yeon Sung', cursive;
+  font-weight: 400;
+  padding: 0 50px;
+}
+
+.statistical-data {
+  display: grid;
+  grid-template-columns: 35% 65%;
+  grid-template-rows: 50% 50%;
+  margin: 15px 0px;
+}
+.difficulty {
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+.level {
+  grid-column: 1/2;
+  grid-row: 2/3;
+  font-weight: 30;
+  font-size: 13px;
+}
+.graphic {
+  grid-column: 2/3;
+  grid-row:1/3;
+  align-self: center;
+}
+
+/***********responsividad***********/
+  /*responsividad 1024px de ancho*/
+  @media screen and (max-width: 1024px) {
+    /*para todas las paginas, general*/
+    #login {
+      height: 40px;
+      width: 120px;
+    }
+  }
+  @media screen and (max-width: 912px) {
+    /*para todas las paginas, general*/
+    #nav-Bar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+    }
+    #LOLimg {
+      display: none;
+    }
+    #login {
+      grid-column: 7/8;
+      grid-row: 1/2;
+    }
+    #search {
+      grid-column: 1/7;
+      grid-row: 1/2;
+    }
+    .text-social {
+      display: none;
+    }
+    .separator-3 {
+      display: none;
+    }
+    #social-media {
+      display: grid;
+      grid-template-columns: 100%;
+      padding: 0px 90px;
+    }
+    .icons {
+      display: flex;
+      justify-content:center
+    }
+    /*para la pagina de informacion*/
+    #champion-information {
+      margin: 0px 15px;
+      margin-right: 15px;
+    }
+    #description {
+      padding: 0px 15px;
+    }
+    .container1 {
+      
+      height: 17.px;
+      width: 20px;
+    }
+  }  
+
+  @media screen and (max-width: 540px) {
+    /*para todas las paginas, general*/
+    #nav-Bar {
+      height: 180px;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 60px 30px 30px 30px 30px;
+    }
+    .nav {margin-top: 0px;}
+    #LOLimg {
+      display: none;
+      grid-column: 1/2;
+      grid-row: 1/2;
+    }
+    #login {
+      display: none;
+    }
+    #search {
+      grid-column: 1/3;
+      grid-row: 1/2;
+      margin-top: 0px;
+    }
+    .all{
+      grid-column: 1/3;
+    }
+    /*para la pagina index*/
+    #champions-list {
+      min-height: 300px;
+    }
+    #video-1 {
+      display: none;
+    }
+    /*para la pagina de informacion*/
+    #champion-information {
+      min-height: 900px;
+      display: grid;
+      grid-template-columns: 100%;
+      grid-template-rows: 210px min-content;
+      justify-items: center;    
+    }  
+    #background-champion {
+      height: 210px;
+    }
+    #information-card {
+      display: grid;
+      grid-template-columns: 100%;
+      grid-template-rows: 80px;
+    }
+    #title {
+      height: 80px;
+    }
+    #title-title {
+      font-size: 15px;
+    }
+    #title-name {
+      font-size: 40px;
+    }
+    #resume {
+      display: flex;
+      flex-flow: row wrap;
+    }
+    #statistics {
+      border-right-style: none;
+      width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 515px) {
+    /*para todas las paginas, general*/
+    #search {
+      width: 300px;
+    }
+    #input {
+      width: 260px;
+    }
+    .icons {
+      font-size: 30px;
+      padding: 3px;
+    }
+  }
+  
+  @media screen and (max-width: 310px) {
+    /*para todas las paginas, general*/
+    #search {
+      width: 200px;
+    }
+    #input {
+      width: 150px;
+    }
+    .icons {
+      font-size: 20px;
+      padding: 2px;
+    }
+    /*para la pagina de index*/
+    #champions-list {
+      min-height: 200px;
+    }
+    /*para la pagina de informacion*/
+    .statistical-data {
+      display: flex;
+      flex-flow: column-reverse wrap;
+      margin: 30px 0px;
+      align-content: flex-start;
+    }
+    .graphic {
+      align-content: flex-start;
+    }
+  }
